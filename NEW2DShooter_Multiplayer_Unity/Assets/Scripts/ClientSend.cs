@@ -29,15 +29,6 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void UDPTestReceived()
-    {
-        using (Packet packet = new Packet((int)ClientPackets.udpTestReceive))
-        {
-            packet.Write($"Received UDP packet");
-            SendUDPData(packet);
-        }
-    }
-
     public static void PlayerPosition(Vector2 movement)
     {
         using (Packet packet = new Packet((int)ClientPackets.playerPosition))

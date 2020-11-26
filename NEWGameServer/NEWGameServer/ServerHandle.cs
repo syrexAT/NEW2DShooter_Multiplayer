@@ -26,18 +26,13 @@ namespace NEWGameServer
             //TODO: Send player into game
         }
 
-        public static void UDPTestReceived(int fromClient, Packet packet)
-        {
-            string msg = packet.ReadString();
-            Console.WriteLine($"Received Packet via UDP. Contains message: {msg}");
-        }
-
         public static void PlayerPosition(int fromClient, Packet packet)
         {
             Vector2 position = packet.ReadVector2();
             Quaternion rotation = packet.ReadQuaternion();
 
             Server.clients[fromClient].player.SetPosition(position, rotation);
+            Console.WriteLine($"received from client: {fromClient}");
         }
     }
 }

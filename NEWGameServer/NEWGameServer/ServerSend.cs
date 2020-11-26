@@ -78,16 +78,6 @@ namespace NEWGameServer
             }
         }
 
-        public static void UDPTest(int toClient)
-        {
-            using (Packet packet = new Packet((int)ServerPackets.udpTest))
-            {
-                packet.Write("A test packet for UDP.");
-
-                SendUDPData(toClient, packet);
-            }
-        }
-
         public static void SpawnPlayer(int toClient, Player player)
         {
             using(Packet packet = new Packet((int)ServerPackets.spawnPlayer))
@@ -107,20 +97,20 @@ namespace NEWGameServer
             {
                 packet.Write(player.id);
                 packet.Write(player.position);
-
+                Console.WriteLine($"writing to player {player.id}");
                 SendUDPDataToAll(player.id, packet);
             }
         }
 
-        //public static void PlayerRotation(Player player)
-        //{
-        //    using (Packet packet = new Packet((int)ServerPackets.playerRotation))
-        //    {
-        //        packet.Write(player.id);
-        //        packet.Write(player.rotation);
+        public static void PlayerRotation(Player player)
+        {
+            using (Packet packet = new Packet((int)ServerPackets.playerRotation))
+            {
+                packet.Write(player.id);
+                packet.Write(player.rotation);
 
-        //        SendTCPDataToAll(player.id, packet);
-        //    }
-        //}
+                SendUDPDataToAll(player.id, packet);
+            }
+        }
     }
 }

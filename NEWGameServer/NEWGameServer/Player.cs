@@ -13,7 +13,7 @@ namespace NEWGameServer
 
         public Vector2 position;
         //public Quaternion rotation;
-        public Quaternion rotation; //because 2d 
+        public Quaternion rotation; 
 
         private float moveSpeed = 5f / Constants.TICKS_PER_SEC; //same as multiplying Time.DeltaTime
 
@@ -28,7 +28,7 @@ namespace NEWGameServer
         public void Update()
         {
             ServerSend.PlayerPosition(this);
-            //ServerSend.PlayerRotation(this);
+            ServerSend.PlayerRotation(this);
         }
 
         private void Move(Vector2 _position)
@@ -38,7 +38,7 @@ namespace NEWGameServer
 
         public void SetPosition(Vector2 _position, Quaternion _rotation)
         {
-            position += _position * moveSpeed;
+            position = _position;
             rotation = _rotation;
         }
     }

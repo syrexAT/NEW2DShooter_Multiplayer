@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     {
         SendPositionToServer();
 
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
+        transform.position += (Vector3)movement * moveSpeed * Time.fixedDeltaTime;
+
         Vector3 lookDir = mousePos - transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f; //- or + 90?
         player.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -39,9 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void SendPositionToServer()
     {
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
-        transform.position += (Vector3)movement * moveSpeed * Time.fixedDeltaTime;
-        ClientSend.PlayerPosition(movement);
+
+        ClientSend.PlayerPosition(transform.position);
     }
 }

@@ -20,14 +20,6 @@ public class ClientHandle : MonoBehaviour
         Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
     }
 
-    public static void UDPTest(Packet packet)
-    {
-        string msg = packet.ReadString();
-
-        Debug.Log($"Received packet via UDP. Contains message: {msg}");
-        ClientSend.UDPTestReceived();
-    }
-
     public static void SpawnPlayer(Packet packet)
     {
         int id = packet.ReadInt();
@@ -42,15 +34,16 @@ public class ClientHandle : MonoBehaviour
     {
         int id = packet.ReadInt();
         Vector2 position = packet.ReadVector2();
+        Debug.Log(id);
 
         GameManager.players[id].transform.position = position;
     }
 
-    //public static void PlayerRotation(Packet packet)
-    //{
-    //    int id = packet.ReadInt();
-    //    Quaternion rotation = packet.ReadQuaternion();
+    public static void PlayerRotation(Packet packet)
+    {
+        int id = packet.ReadInt();
+        Quaternion rotation = packet.ReadQuaternion();
 
-    //    GameManager.players[id].transform.rotation = rotation;
-    //}
+        GameManager.players[id].transform.rotation = rotation;
+    }
 }

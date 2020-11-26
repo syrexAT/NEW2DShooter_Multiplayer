@@ -11,3 +11,16 @@ C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multipl
 C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.pdb
 C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.genruntimeconfig.cache
 C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.csproj.CoreCompileInputs.cache
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\bin\Debug\netcoreapp3.1\NEWGameServer.exe
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\bin\Debug\netcoreapp3.1\NEWGameServer.deps.json
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\bin\Debug\netcoreapp3.1\NEWGameServer.runtimeconfig.json
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\bin\Debug\netcoreapp3.1\NEWGameServer.runtimeconfig.dev.json
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\bin\Debug\netcoreapp3.1\NEWGameServer.dll
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\bin\Debug\netcoreapp3.1\NEWGameServer.pdb
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.csprojAssemblyReference.cache
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.AssemblyInfoInputs.cache
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.AssemblyInfo.cs
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.csproj.CoreCompileInputs.cache
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.dll
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.pdb
+C:\Users\manue\OneDrive\Dokumente\SAE_PC\NetworkProgramming\NEW2DShooter_Multiplayer_GIT\NEW2DShooter_Multiplayer\NEWGameServer\NEWGameServer\obj\Debug\netcoreapp3.1\NEWGameServer.genruntimeconfig.cache
