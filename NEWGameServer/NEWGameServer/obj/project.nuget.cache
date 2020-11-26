@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "/V5tQ0nf9qfMQbK5eTi2NKchGz3liruZq+B3daQsHc9sGk+CYT1uADX5lK/foHp1Z1bP+aqFgMT/9WBUFt/peA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\manue\\OneDrive\\Dokumente\\SAE_PC\\NetworkProgramming\\NEW2DShooter_Multiplayer_GIT\\NEW2DShooter_Multiplayer\\NEWGameServer\\NEWGameServer\\NEWGameServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\manue\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
