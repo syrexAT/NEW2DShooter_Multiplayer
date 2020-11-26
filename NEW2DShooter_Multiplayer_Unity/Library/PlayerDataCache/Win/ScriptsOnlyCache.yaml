@@ -57,6 +57,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 81
@@ -444,7 +446,7 @@ ScriptsOnlyBuild:
     className: ThreadManager
   - hash:
       serializedVersion: 2
-      Hash: 29b1a4f7b7c61e56335c1c30600545ee
+      Hash: c29ed7f2fb780973f4d604715121dfd1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController

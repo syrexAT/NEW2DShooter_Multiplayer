@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     Vector3 mousePos;
     public PlayerManager player;
+    public Rigidbody2D rb;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
     }
 
@@ -43,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
     private void SendPositionToServer()
     {
-
         ClientSend.PlayerPosition(transform.position);
     }
 }

@@ -32,7 +32,6 @@ namespace NEWGameServer
             Quaternion rotation = packet.ReadQuaternion();
 
             Server.clients[fromClient].player.SetPosition(position, rotation);
-            Console.WriteLine($"received from client: {fromClient}");
         }
     }
 }

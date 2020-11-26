@@ -97,7 +97,6 @@ namespace NEWGameServer
             {
                 packet.Write(player.id);
                 packet.Write(player.position);
-                Console.WriteLine($"writing to player {player.id}");
                 SendUDPDataToAll(player.id, packet);
             }
         }

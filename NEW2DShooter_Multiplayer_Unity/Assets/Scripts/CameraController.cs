@@ -17,7 +17,9 @@ public class CameraController : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("LocalPlayer");
         }
-
-        transform.position = player.transform.position;
+        if (player != null)
+        {
+            transform.position = player.transform.position;
+        }
     }
 }
