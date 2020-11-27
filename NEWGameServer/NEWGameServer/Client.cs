@@ -84,7 +84,7 @@ namespace NEWGameServer
                     int byteLength = stream.EndRead(result);
                     if (byteLength <= 0)
                     {
-                        //TODO: Disconnect
+                        Server.clients[id].Disconnect();
                         return;
                     }
                     //if we have received data, we create new array with the length of bytelength
@@ -99,6 +99,7 @@ namespace NEWGameServer
                 catch (Exception ex)
                 {
                     Console.Write($"Error receiving TCP Data: {ex}");
+                    Server.clients[id].Disconnect();
                 }
             }
 
@@ -160,6 +161,14 @@ namespace NEWGameServer
 
             }
 
+            public void Disconnect()
+            {
+                socket.Close();
+                stream = null;
+                receivedData = null;
+                receiveBuffer = null;
+                socket = null;
+            }
         }
 
         //pretty similar to the clients version
@@ -197,6 +206,11 @@ namespace NEWGameServer
                     }
                 });
             }
+
+            public void Disconnect()
+            {
+                endPoint = null;
+            }
         }
 
         public void SendIntoGame(string playerName)
@@ -226,6 +240,16 @@ namespace NEWGameServer
                     ServerSend.SpawnPlayer(client.id, player);
                 }
             }
+        }
+
+        private void Disconnect()
+        {
+            Console.WriteLine(tcp.socket.Client.RemoteEndPoint + " has disconnected.");
+
+            player = null;
+
+            tcp.Disconnect();
+            udp.Disconnect();
         }
     }
 }

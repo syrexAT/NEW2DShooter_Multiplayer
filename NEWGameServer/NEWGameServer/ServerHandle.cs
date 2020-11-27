@@ -22,8 +22,6 @@ namespace NEWGameServer
             }
 
             Server.clients[fromClient].SendIntoGame(username);
-
-            //TODO: Send player into game
         }
 
         public static void PlayerPosition(int fromClient, Packet packet)

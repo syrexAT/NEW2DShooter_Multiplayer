@@ -80,11 +80,30 @@ namespace NEWGameServer
 
         public static void SpawnPlayer(int toClient, Player player)
         {
-            using(Packet packet = new Packet((int)ServerPackets.spawnPlayer))
+            using (Packet packet = new Packet((int)ServerPackets.spawnPlayer))
             {
                 packet.Write(player.id);
                 packet.Write(player.username);
-                packet.Write(player.position);
+
+                switch (player.id)
+                {
+                    case 1:
+                        packet.Write(new Vector2(player.position.X - 9, player.position.Y - 9));
+                        break;
+                    case 2:
+                        packet.Write(new Vector2(player.position.X + 9, player.position.Y + 9));
+                        break;
+                    case 3:
+                        packet.Write(new Vector2(player.position.X + 9, player.position.Y - 9));
+                        break;
+                    case 4:
+                        packet.Write(new Vector2(player.position.X - 9, player.position.Y + 9));
+                        break;
+                    default:
+                        Console.WriteLine("Spawned Player exceeds Playerlimit!");
+                        break;
+                }
+
                 packet.Write(player.rotation);
 
                 SendTCPData(toClient, packet);
