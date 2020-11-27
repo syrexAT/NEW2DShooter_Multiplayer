@@ -132,6 +132,8 @@ namespace NEWGameServer
             {
                 {(int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
                 {(int)ClientPackets.playerPosition, ServerHandle.PlayerPosition },
+                {(int)ClientPackets.newProjectile, ServerHandle.SpawnProjectile },
+                //{(int)ClientPackets.projectilePosition, ServerHandle.ProjectilePosition },
             };
 
             Console.WriteLine("Initialized packets.");

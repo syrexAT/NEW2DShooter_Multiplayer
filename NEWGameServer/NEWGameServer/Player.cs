@@ -12,8 +12,9 @@ namespace NEWGameServer
         public string username;
 
         public Vector2 position;
-        //public Quaternion rotation;
-        public Quaternion rotation; 
+        public Quaternion rotation;
+
+        public Dictionary<int, Projectile> projectiles = new Dictionary<int, Projectile>(); //this stores all projectiles on the server of the player
 
         private float moveSpeed = 5f / Constants.TICKS_PER_SEC; //same as multiplying Time.DeltaTime
 
@@ -29,17 +30,35 @@ namespace NEWGameServer
         {
             ServerSend.PlayerPosition(this);
             ServerSend.PlayerRotation(this);
-        }
 
-        private void Move(Vector2 _position)
-        {
-
+            //foreach (Projectile projectile in projectiles.Values)
+            //{
+            //    projectile.Update();
+            //}
         }
 
         public void SetPosition(Vector2 _position, Quaternion _rotation)
         {
             position = _position;
             rotation = _rotation;
+        }
+
+        public void CreateNewNewProjectile(int projectileID, Vector2 projectilePos, int fromClient)
+        {
+            projectiles.Add(projectileID, new Projectile(projectilePos, this));
+
+            //this will send the newly spawned projectile information to all other player
+            foreach (Client client in Server.clients.Values)
+            {
+                //using this to send the information of all other players that are already connected to our new player
+                if (client.player != null)
+                {
+                    if (client.id != fromClient)
+                    {
+                        ServerSend.SpawnProjectile(client.id, projectiles[projectileID]);
+                    }
+                }
+            }
         }
     }
 }

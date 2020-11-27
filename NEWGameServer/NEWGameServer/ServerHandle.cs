@@ -31,5 +31,21 @@ namespace NEWGameServer
 
             Server.clients[fromClient].player.SetPosition(position, rotation);
         }
+
+        public static void SpawnProjectile(int fromClient, Packet packet)
+        {
+            int projectileID = packet.ReadInt();
+            Vector2 projectilePos = packet.ReadVector2();
+
+            Server.clients[fromClient].player.CreateNewNewProjectile(projectileID, projectilePos, fromClient);
+        }
+
+        //public static void ProjectilePosition(int fromClient, Packet packet)
+        //{
+        //    int projectileID = packet.ReadInt();
+        //    Vector2 position = packet.ReadVector2();
+
+        //    Server.clients[fromClient].player.projectiles[projectileID].SetProjectilePosition(position);
+        //}
     }
 }

@@ -130,5 +130,29 @@ namespace NEWGameServer
                 SendUDPDataToAll(player.id, packet);
             }
         }
+
+        public static void SpawnProjectile(int toClient, Projectile projectile)
+        {
+            using (Packet packet = new Packet((int)ServerPackets.spawnProjectile))
+            {
+                packet.Write(projectile.player.id);
+                packet.Write(projectile.id);
+                packet.Write(projectile.position);
+
+                SendTCPData(toClient, packet);
+            }
+        }
+
+        //public static void ProjectilePosition(Projectile projectile)
+        //{
+        //    using (Packet packet = new Packet((int)ServerPackets.projectilePosition))
+        //    {
+        //        packet.Write(projectile.player.id);
+        //        packet.Write(projectile.id);
+        //        packet.Write(projectile.position);
+
+        //        SendUDPDataToAll(projectile.player.id, packet);
+        //    }
+        //}
     }
 }

@@ -217,7 +217,7 @@ namespace NEWGameServer
         {
             player = new Player(id, playerName, new Vector2(0, 0));
 
-            //looping through clients ddictionary
+            //looping through clients dictionary
             foreach (Client client in Server.clients.Values)
             {
                 //using this to send the information of all other players that are already connected to our new player
@@ -228,11 +228,9 @@ namespace NEWGameServer
                         ServerSend.SpawnPlayer(id, client.player);
                     }
                 }
-
-
             }
 
-            //this will send the new players information to all oither players as well as to himself
+            //this will send the new players information to all other players as well as to himself
             foreach (Client client in Server.clients.Values)
             {
                 if (client.player != null)

@@ -11,7 +11,9 @@ namespace NEWGameServer
         welcome = 1,
         spawnPlayer,
         playerPosition,
-        playerRotation
+        playerRotation,
+        spawnProjectile,
+        //projectilePosition
     }
 
     /// <summary>Sent from client to server.</summary>
@@ -19,7 +21,9 @@ namespace NEWGameServer
     {
         welcomeReceived = 1,
         playerPosition,
-        playerRotation
+        playerRotation,
+        newProjectile,
+        //projectilePosition
     }
 
     public class Packet : IDisposable
