@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Vector3 newProjectilePos = transform.position + mousePos.normalized;
-            GameObject projectile = Instantiate(projectilePrefab, newProjectilePos, Quaternion.identity);
+            GameObject projectile = Instantiate(projectilePrefab, newProjectilePos, player.transform.rotation);
         }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);

@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - GameManager
     - PlayerController
     - PlayerManager
+    - Projectile
     - ThreadManager
     - UIManager
     Unity.2D.Tilemap.Editor.dll:
@@ -59,6 +60,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 81
@@ -76,37 +79,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11590}
     - Class: 114
-      Script: {instanceID: 11796}
+      Script: {instanceID: 11752}
     - Class: 114
-      Script: {instanceID: 11822}
+      Script: {instanceID: 11798}
     - Class: 114
-      Script: {instanceID: 12148}
+      Script: {instanceID: 11824}
     - Class: 114
-      Script: {instanceID: 12208}
+      Script: {instanceID: 12150}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 12210}
     - Class: 114
-      Script: {instanceID: 12456}
+      Script: {instanceID: 12444}
     - Class: 114
-      Script: {instanceID: 12574}
+      Script: {instanceID: 12458}
     - Class: 114
-      Script: {instanceID: 12592}
+      Script: {instanceID: 12576}
     - Class: 114
-      Script: {instanceID: 12596}
+      Script: {instanceID: 12594}
     - Class: 114
-      Script: {instanceID: 12660}
+      Script: {instanceID: 12598}
     - Class: 114
-      Script: {instanceID: 12726}
+      Script: {instanceID: 12662}
     - Class: 114
-      Script: {instanceID: 12764}
+      Script: {instanceID: 12728}
     - Class: 114
-      Script: {instanceID: 12892}
+      Script: {instanceID: 12766}
     - Class: 114
-      Script: {instanceID: 12898}
+      Script: {instanceID: 12894}
     - Class: 114
-      Script: {instanceID: 13052}
+      Script: {instanceID: 12900}
     - Class: 114
-      Script: {instanceID: 13114}
+      Script: {instanceID: 13054}
+    - Class: 114
+      Script: {instanceID: 13116}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -284,6 +289,12 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: 4f64957bfdfb43178103d4ecbf2717d2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Projectile
+  - hash:
+      serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -446,7 +457,7 @@ ScriptsOnlyBuild:
     className: ThreadManager
   - hash:
       serializedVersion: 2
-      Hash: c29ed7f2fb780973f4d604715121dfd1
+      Hash: fb4e8119ed398c256497c7af64430d2c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -476,7 +487,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 86a4c4a60253e8c173479e8f7fa608c6
+      Hash: 07cdc5889b8c12f5224911bfdae49a4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -488,7 +499,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 55dda43dd4863997e35eb292120b82c9
+      Hash: dae43f67904112cf89acb02995694df8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
