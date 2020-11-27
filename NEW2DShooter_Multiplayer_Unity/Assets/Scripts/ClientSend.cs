@@ -41,4 +41,29 @@ public class ClientSend : MonoBehaviour
         }
 
     }
+
+    public static void SpawnProjectile(Projectile projectile, int _shotByPlayer)
+    {
+        using (Packet packet = new Packet((int)ClientPackets.newProjectile))
+        {
+            packet.Write(projectile.id);
+            packet.Write(projectile.transform.position);
+
+            SendTCPData(packet);
+        }
+    }
+
+    //public static void ProjectilePosition(Projectile projectile)
+    //{
+    //    using (Packet packet = new Packet((int)ClientPackets.projectilePosition))
+    //    {
+    //        packet.Write(projectile.id);
+    //        packet.Write(projectile.transform.position);
+
+    //        SendTCPData(packet);
+    //    }
+    //}
+
+
+
 }

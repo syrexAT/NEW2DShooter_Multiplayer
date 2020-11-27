@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
+    public GameObject projectilePrefab;
 
     private void Awake()
     {
@@ -37,6 +38,12 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerManager>().id = id;
         player.GetComponent<PlayerManager>().username = username;
         players.Add(id, player.GetComponent<PlayerManager>());
+    }
+
+    public void SpawnProjectile(int id, int projectileID, Vector2 position)
+    {
+        GameObject projectile = Instantiate(projectilePrefab, position, Quaternion.identity);
+        //players[id].projectiles.Add(projectileID, projectile.GetComponent<Projectile>());
     }
 
 

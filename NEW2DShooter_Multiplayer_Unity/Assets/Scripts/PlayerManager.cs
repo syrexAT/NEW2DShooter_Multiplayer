@@ -6,4 +6,5 @@ public class PlayerManager : MonoBehaviour
 {
     public int id;
     public string username;
+    //public Dictionary<int, Projectile> projectiles = new Dictionary<int, Projectile>();
 }

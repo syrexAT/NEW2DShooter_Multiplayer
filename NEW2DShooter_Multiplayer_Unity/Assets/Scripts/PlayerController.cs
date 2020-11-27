@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     public PlayerManager player;
     public Rigidbody2D rb;
 
+    public GameObject projectilePrefab;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,10 +26,11 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(transform.position, transform.up * 2, Color.red);
         Vector3 cursorInWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
         Debug.Log(cursorInWorldPos);
-        //if (Input.GetKeyDown(KeyCode.Mouse0))
-        //{
-        //    ClientSend.PlayerShoot(cursorInWorldPos);
-        //}
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Vector3 newProjectilePos = transform.position + mousePos.normalized;
+            GameObject projectile = Instantiate(projectilePrefab, newProjectilePos, Quaternion.identity);
+        }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }

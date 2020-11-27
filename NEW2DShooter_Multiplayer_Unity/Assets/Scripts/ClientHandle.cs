@@ -46,4 +46,21 @@ public class ClientHandle : MonoBehaviour
 
         GameManager.players[id].transform.rotation = rotation;
     }
+
+    public static void SpawnProjectile(Packet packet)
+    {
+        int playerID = packet.ReadInt();
+        int projectileID = packet.ReadInt();
+        Vector2 position = packet.ReadVector2();
+
+        //GameManager.players[playerID].projectiles[projectileID].SpawnProjectile(playerID, projectileID, position);
+        GameManager.instance.SpawnProjectile(playerID, projectileID, position);
+    }
+
+    //public static void ProjectilePosition(Packet packet)
+    //{
+    //    int playerID = packet.ReadInt();
+    //    int projectileID = packet.ReadInt();
+    //    Vector2 position = packet.ReadVector2();
+    //}
 }
