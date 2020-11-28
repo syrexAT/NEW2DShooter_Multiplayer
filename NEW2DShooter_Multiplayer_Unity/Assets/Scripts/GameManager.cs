@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -48,23 +49,54 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer(int id)
     {
-        switch (id)
+        Vector2 averagePlayerPosition = new Vector2(0, 0);
+        foreach (PlayerManager player in players.Values)
         {
-            case 1:
-                players[id].transform.position = new Vector2(-9, -9);
-                break;
-            case 2:
-                players[id].transform.position = new Vector2(9, 9);
-                break;
-            case 3:
-                players[id].transform.position = new Vector2(9, -9);
-                break;
-            case 4:
-                players[id].transform.position = new Vector2(-9, +9);
-                break;
-            default:
-                Debug.Log("Spawned Player exceeds Playerlimit!");
-                break;
+            averagePlayerPosition += (Vector2)player.transform.position;
         }
+
+        averagePlayerPosition /= players.Count;
+
+        List<Vector2> spawnPositions = new List<Vector2>();
+        spawnPositions.Add(new Vector2(-9, -9));
+        spawnPositions.Add(new Vector2(9, 9));
+        spawnPositions.Add(new Vector2(9, -9));
+        spawnPositions.Add(new Vector2(-9, 9));
+
+        Dictionary<float, Vector2> distDic = new Dictionary<float, Vector2>();
+
+        foreach (Vector2 spawnPosition in spawnPositions)
+        {
+            float dist = Vector2.Distance(averagePlayerPosition, spawnPosition);
+            distDic.Add(dist, spawnPosition);
+        }
+
+        List<float> distances = distDic.Keys.ToList();
+
+        distances.Sort();
+
+        Vector2 furthestVector = distDic[distances[distances.Count - 1]];
+        Debug.Log("FURTHEST VECTOR" + furthestVector);
+
+        players[id].transform.position = furthestVector;
+
+        //switch (id)
+        //{
+        //    case 1:
+        //        players[id].transform.position = new Vector2(-9, -9);
+        //        break;
+        //    case 2:
+        //        players[id].transform.position = new Vector2(9, 9);
+        //        break;
+        //    case 3:
+        //        players[id].transform.position = new Vector2(9, -9);
+        //        break;
+        //    case 4:
+        //        players[id].transform.position = new Vector2(-9, +9);
+        //        break;
+        //    default:
+        //        Debug.Log("Spawned Player exceeds Playerlimit!");
+        //        break;
+        //}
     }
 }

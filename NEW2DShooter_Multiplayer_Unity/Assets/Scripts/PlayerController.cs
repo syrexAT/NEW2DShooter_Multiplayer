@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.DrawRay(transform.position, transform.up * 2, Color.red);
         Vector3 cursorInWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(cursorInWorldPos);
+        //Debug.Log(cursorInWorldPos);
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
