@@ -1135,8 +1135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMenu: {fileID: 966952964}
-  deathCount: {fileID: 201533218}
+  deathCountGO: {fileID: 201533218}
   userNameField: {fileID: 94067966}
+  deathCountText: {fileID: 201533220}
+  deathCount: 0
   cam: {fileID: 519420031}
 --- !u!1 &918670757
 GameObject:

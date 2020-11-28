@@ -27,11 +27,19 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("LocalPlayer"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            //TODO: Respawn player   
+            //TODO: Respawn player
+            GameManager.instance.RespawnPlayer(other.gameObject.GetComponent<PlayerManager>().id);
+        }
+        else if (other.gameObject.CompareTag("LocalPlayer"))
+        {
+            GameManager.instance.RespawnPlayer(other.gameObject.GetComponent<PlayerManager>().id);
+            UIManager.instance.IncreaseDeathCount();
         }
 
         Destroy(this.gameObject);
     }
+
+
 }

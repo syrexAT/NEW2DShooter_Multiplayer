@@ -46,5 +46,25 @@ public class GameManager : MonoBehaviour
         //players[id].projectiles.Add(projectileID, projectile.GetComponent<Projectile>());
     }
 
-
+    public void RespawnPlayer(int id)
+    {
+        switch (id)
+        {
+            case 1:
+                players[id].transform.position = new Vector2(-9, -9);
+                break;
+            case 2:
+                players[id].transform.position = new Vector2(9, 9);
+                break;
+            case 3:
+                players[id].transform.position = new Vector2(9, -9);
+                break;
+            case 4:
+                players[id].transform.position = new Vector2(-9, +9);
+                break;
+            default:
+                Debug.Log("Spawned Player exceeds Playerlimit!");
+                break;
+        }
+    }
 }

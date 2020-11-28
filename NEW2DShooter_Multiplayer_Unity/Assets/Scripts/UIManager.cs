@@ -8,8 +8,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public GameObject startMenu;
-    public GameObject deathCount;
+    public GameObject deathCountGO;
     public TMP_InputField userNameField;
+    public TMP_Text deathCountText;
+    public float deathCount;
 
     public Camera cam;
 
@@ -30,7 +32,13 @@ public class UIManager : MonoBehaviour
         //Destroy(cam.gameObject);
         startMenu.SetActive(false);
         userNameField.interactable = false;
-        deathCount.SetActive(true);
+        deathCountGO.SetActive(true);
         Client.instance.ConnectToServer(); //calling the clients ConnectToServer method!
+    }
+
+    public void IncreaseDeathCount()
+    {
+        deathCount++; 
+        deathCountText.text = $"Deaths: {deathCount}";
     }
 }
