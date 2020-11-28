@@ -137,7 +137,6 @@ namespace NEWGameServer
             using (Packet packet = new Packet((int)ServerPackets.spawnProjectile))
             {
                 packet.Write(projectile.player.id);
-                packet.Write(projectile.id);
                 packet.Write(projectile.position);
 
                 SendTCPData(toClient, packet);

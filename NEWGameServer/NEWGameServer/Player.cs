@@ -43,9 +43,9 @@ namespace NEWGameServer
             rotation = _rotation;
         }
 
-        public void CreateNewNewProjectile(int projectileID, Vector2 projectilePos, int fromClient)
+        public void CreateNewNewProjectile(Vector2 projectilePos, int fromClient)
         {
-            projectiles.Add(projectileID, new Projectile(projectilePos, this));
+            projectiles.Add(new Projectile(projectilePos, this));
 
             //this will send the newly spawned projectile information to all other player
             foreach (Client client in Server.clients.Values)
@@ -55,7 +55,7 @@ namespace NEWGameServer
                 {
                     if (client.id != fromClient)
                     {
-                        ServerSend.SpawnProjectile(client.id, projectiles[projectileID]);
+                        ServerSend.SpawnProjectile(client.id, projectiles[projectiles.Count -1]);
                     }
                 }
             }

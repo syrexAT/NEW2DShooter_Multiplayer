@@ -34,10 +34,10 @@ namespace NEWGameServer
 
         public static void SpawnProjectile(int fromClient, Packet packet)
         {
-            int projectileID = packet.ReadInt();
             Vector2 projectilePos = packet.ReadVector2();
+            int playerID = packet.ReadInt();
 
-            Server.clients[fromClient].player.CreateNewNewProjectile(projectileID, projectilePos, fromClient);
+            Server.clients[fromClient].player.CreateNewNewProjectile(projectilePos, fromClient);
         }
 
         //public static void ProjectilePosition(int fromClient, Packet packet)
