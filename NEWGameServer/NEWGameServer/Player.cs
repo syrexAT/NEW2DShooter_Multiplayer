@@ -14,7 +14,7 @@ namespace NEWGameServer
         public Vector2 position;
         public Quaternion rotation;
 
-        public Dictionary<int, Projectile> projectiles = new Dictionary<int, Projectile>(); //this stores all projectiles on the server of the player
+        public List<Projectile> projectiles = new List<Projectile>(); //this stores all projectiles on the server of the player
 
         private float moveSpeed = 5f / Constants.TICKS_PER_SEC; //same as multiplying Time.DeltaTime
 

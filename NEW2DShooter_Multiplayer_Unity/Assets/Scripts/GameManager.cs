@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnProjectile(int id, int projectileID, Vector2 position)
     {
-        GameObject projectile = Instantiate(projectilePrefab, position, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab, position, players[id].transform.rotation);
         //players[id].projectiles.Add(projectileID, projectile.GetComponent<Projectile>());
     }
 

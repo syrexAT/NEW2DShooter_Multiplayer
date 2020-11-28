@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public int id;
     public Rigidbody2D rigBody;
     //public int shotByPlayer;
-    public float moveSpeed = 5f;
+    private float flyingSpeed = 7.5f;
 
 
     // Start is called before the first frame update
@@ -22,8 +22,7 @@ public class Projectile : MonoBehaviour
     void FixedUpdate()
     {
         //ClientSend.ProjectilePosition(this);
-        transform.position += transform.forward * moveSpeed;
-
+        transform.position += transform.up * flyingSpeed * Time.fixedDeltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,12 +33,5 @@ public class Projectile : MonoBehaviour
         }
 
         Destroy(this.gameObject);
-
     }
-
-
-
-
-
-
 }
