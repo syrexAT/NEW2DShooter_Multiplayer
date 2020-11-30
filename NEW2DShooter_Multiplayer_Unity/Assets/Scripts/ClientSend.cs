@@ -53,6 +53,16 @@ public class ClientSend : MonoBehaviour
         }
     }
 
+    public static void RemoveProjectile(Projectile projectile)
+    {
+        using (Packet packet = new Packet((int)ClientPackets.newProjectile))
+        {
+            packet.Write(projectile.transform.position);
+
+            SendTCPData(packet);
+        }
+    }
+
     //public static void ProjectilePosition(Projectile projectile)
     //{
     //    using (Packet packet = new Packet((int)ClientPackets.projectilePosition))

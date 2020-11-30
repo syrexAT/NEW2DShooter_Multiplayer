@@ -846,7 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3d1f8c9fdc56447bdd24314445405d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPlayerPrefab: {fileID: 1172127419209318908, guid: c49226da8cfb1144fbaec801ff0086ef,
+  localPlayerPrefab: {fileID: 5236073893593815312, guid: 0e6e5e62edcf3984192604335e3184b9,
     type: 3}
   playerPrefab: {fileID: 1172127419209318908, guid: 9b5a98067dcfeb841bd1728a3a1ea81a,
     type: 3}

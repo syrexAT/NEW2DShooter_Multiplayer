@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && shootingCooldown <= 0)
         {
-            Vector3 newProjectilePos = transform.position + (mousePos - transform.position).normalized;
+            Vector3 newProjectilePos = transform.position + (mousePos - transform.position).normalized * 0.7f;
             GameObject projectile = Instantiate(projectilePrefab, newProjectilePos, transform.rotation);
             ClientSend.SpawnProjectile(projectile.GetComponent<Projectile>(), player.id);
 
@@ -38,14 +38,18 @@ public class PlayerController : MonoBehaviour
         }
 
         shootingCooldown -= Time.deltaTime;
+
+        SendPositionToServer();
     }
     private void FixedUpdate()
     {
-        SendPositionToServer();
+
 
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
-        transform.position += (Vector3)movement.normalized * moveSpeed * Time.fixedDeltaTime;
+        //transform.position += (Vector3)movement.normalized * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+        //transform.Translate(movement * moveSpeed * Time.fixedDeltaTime);
 
         Vector3 lookDir = mousePos - transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f; //- or + 90?
