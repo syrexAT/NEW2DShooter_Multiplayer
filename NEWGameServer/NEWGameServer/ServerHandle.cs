@@ -29,7 +29,9 @@ namespace NEWGameServer
             Vector2 position = packet.ReadVector2();
             Quaternion rotation = packet.ReadQuaternion();
 
+            //hier nen null check?
             Server.clients[fromClient].player.SetPosition(position, rotation);
+
         }
 
         public static void SpawnProjectile(int fromClient, Packet packet)

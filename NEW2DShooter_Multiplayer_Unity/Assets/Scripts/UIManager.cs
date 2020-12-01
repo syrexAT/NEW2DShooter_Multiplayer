@@ -41,4 +41,12 @@ public class UIManager : MonoBehaviour
         deathCount++; 
         deathCountText.text = $"Deaths: {deathCount}";
     }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }
