@@ -5,8 +5,9 @@ using System.Numerics;
 
 namespace NEWGameServer
 {
-
-    //In this class is where we define the methods to create the packets to send over the network!
+    /// <summary>
+    /// In this class we define the methods to create the packets to send over the network!
+    /// </summary>
     class ServerSend
     {
         //this method is in charge of preparing the packet to be sent
@@ -31,6 +32,7 @@ namespace NEWGameServer
             }
         }
 
+        //sending TCP Data to all expect to the client we received the data from
         private static void SendTCPDataToAll(int exceptClient, Packet packet)
         {
             packet.WriteLength();
@@ -142,17 +144,5 @@ namespace NEWGameServer
                 SendTCPData(toClient, packet);
             }
         }
-
-        //public static void ProjectilePosition(Projectile projectile)
-        //{
-        //    using (Packet packet = new Packet((int)ServerPackets.projectilePosition))
-        //    {
-        //        packet.Write(projectile.player.id);
-        //        packet.Write(projectile.id);
-        //        packet.Write(projectile.position);
-
-        //        SendUDPDataToAll(projectile.player.id, packet);
-        //    }
-        //}
     }
 }

@@ -5,7 +5,9 @@ using System.Numerics;
 
 namespace NEWGameServer
 {
-    //all player related data and logic
+    /// <summary>
+    /// This class contains and handles all player related data and logic
+    /// </summary>
     class Player
     {
         public int id;
@@ -26,15 +28,10 @@ namespace NEWGameServer
             rotation = Quaternion.Identity;
         }
 
-        public void Update()
+        public void Update() //this gets called in the game logic 
         {
             ServerSend.PlayerPosition(this);
             ServerSend.PlayerRotation(this);
-
-            //foreach (Projectile projectile in projectiles.Values)
-            //{
-            //    projectile.Update();
-            //}
         }
 
         public void SetPosition(Vector2 _position, Quaternion _rotation)

@@ -5,6 +5,10 @@ using System.Numerics;
 
 namespace NEWGameServer
 {
+    /// <summary>
+    /// this class handles packets that get sent from the client to the server
+    /// We read out the packet and calling a method at the end of each reading method
+    /// </summary>
     class ServerHandle
     {
         public static void WelcomeReceived(int fromClient, Packet packet)
@@ -29,7 +33,7 @@ namespace NEWGameServer
             Vector2 position = packet.ReadVector2();
             Quaternion rotation = packet.ReadQuaternion();
 
-            //hier nen null check?
+            //null check?
             Server.clients[fromClient].player.SetPosition(position, rotation);
 
         }
@@ -41,13 +45,5 @@ namespace NEWGameServer
 
             Server.clients[fromClient].player.CreateNewNewProjectile(projectilePos, fromClient);
         }
-
-        //public static void ProjectilePosition(int fromClient, Packet packet)
-        //{
-        //    int projectileID = packet.ReadInt();
-        //    Vector2 position = packet.ReadVector2();
-
-        //    Server.clients[fromClient].player.projectiles[projectileID].SetProjectilePosition(position);
-        //}
     }
 }

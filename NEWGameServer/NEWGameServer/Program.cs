@@ -3,6 +3,9 @@ using System.Threading;
 
 namespace NEWGameServer
 {
+    /// <summary>
+    /// this class is running the main thread, as well as starting the server
+    /// </summary>
     class Program
     {
         private static bool isRunning = false;
@@ -38,7 +41,7 @@ namespace NEWGameServer
 
                     if (nextLoop > DateTime.Now) //check if its in the future
                     {
-                        Thread.Sleep(nextLoop - DateTime.Now); //setting it to sleep until its time to execute the next tick
+                        Thread.Sleep(nextLoop - DateTime.Now); //setting it to sleep until its time to execute the next tick, to reduce CPU usage
                     }
                 }
             }

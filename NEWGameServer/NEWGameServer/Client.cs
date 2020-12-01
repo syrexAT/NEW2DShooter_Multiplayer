@@ -7,6 +7,11 @@ using System.Numerics;
 
 namespace NEWGameServer
 {
+    /// <summary>
+    /// this is similar to the client class on the client side
+    /// This script contains classes like TCP and UDP which have methods to send data, receive data, handling partial packets etc.
+    /// This script also sends the player into the game
+    /// </summary>
     class Client
     {
         public static int dataBufferSize = 4096;
@@ -50,9 +55,9 @@ namespace NEWGameServer
 
                 receiveBuffer = new byte[dataBufferSize];
 
-                //byte array that is the location in memeory to store data, read from the stream
+                //byte array that is the location in memory to store data, read from the stream
                 //the location in buffer to begin storing data --> 0
-                // the number of bytes to read from the stream
+                //the number of bytes to read from the stream
                 //async callback that gets executed when beginstream completes
                 stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
@@ -90,9 +95,9 @@ namespace NEWGameServer
                     //if we have received data, we create new array with the length of bytelength
                     byte[] data = new byte[byteLength];
                     Array.Copy(receiveBuffer, data, byteLength); //copying the received bytes into the new array
-                    receivedData.Reset(HandleData(data));
 
-                    //TODO: handle data
+                    receivedData.Reset(HandleData(data)); //Explanation of this is in the Client.cs script at the client side
+
                     stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
                 }

@@ -6,6 +6,10 @@ using System.Net.Sockets;
 
 namespace NEWGameServer
 {
+    /// <summary>
+    /// this class listens for incoming tcp or udp data, and connects clients to the server
+    /// it also contains the packetHandlers dictionary and fills it at the bottom with the enum in Packet.cs and the corresponding method that should get called
+    /// </summary>
     class Server
     {
         public static int MaxPlayers { get; private set; }
@@ -29,11 +33,11 @@ namespace NEWGameServer
             InitializeServerData();
 
             tcpListener = new TcpListener(IPAddress.Any, Port);
-            tcpListener.Start();
+            tcpListener.Start(); //starting the tcpListener
             //pass it an async callback and null for the object state
             tcpListener.BeginAcceptTcpClient(new AsyncCallback(TCPConnectCallback), null);
 
-            udpListener = new UdpClient(Port); //klein geschrieben?
+            udpListener = new UdpClient(Port);
             udpListener.BeginReceive(UDPReceiveCallback, null);
 
             Console.Write($"Server started on {Port}");
@@ -54,7 +58,7 @@ namespace NEWGameServer
                 {
                     //then we connect
                     clients[i].tcp.Connect(client); //passing in the newly connected tcp client instance
-                    return; //return to make  sure client takes only 1 open slot
+                    return; //return to make sure client takes only 1 open slot
                 }
             }
 
@@ -133,7 +137,6 @@ namespace NEWGameServer
                 {(int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
                 {(int)ClientPackets.playerPosition, ServerHandle.PlayerPosition },
                 {(int)ClientPackets.newProjectile, ServerHandle.SpawnProjectile },
-                //{(int)ClientPackets.projectilePosition, ServerHandle.ProjectilePosition },
             };
 
             Console.WriteLine("Initialized packets.");

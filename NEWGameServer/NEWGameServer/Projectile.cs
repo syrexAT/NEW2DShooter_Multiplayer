@@ -16,15 +16,5 @@ namespace NEWGameServer
             position = Position;
             player = Player;
         }
-
-        //public void Update()
-        //{
-        //    ServerSend.ProjectilePosition(this);
-        //}
-
-        //public void SetProjectilePosition(Vector2 _position)
-        //{
-        //    position = _position;
-        //}
     }
 }
