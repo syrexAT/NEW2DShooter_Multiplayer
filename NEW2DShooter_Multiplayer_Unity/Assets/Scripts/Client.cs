@@ -5,12 +5,17 @@ using System.Net;
 using System.Net.Sockets;
 using System;
 
-//RECEIVEDDATA handling, partial packet handling etc. in HandleData / ReceiveCallback
+/// <summary>
+/// Client network code
+/// Creates the TCP and UDP classes with all methods like sending data, receiving data, handling partial packets and disconnecting
+/// Also fills the Dictionary "packetHandlers" by passing the enum and the associated method, this needs to be manually filled everytime we make a new method which should get sent to the server
+/// </summary>
 public class Client : MonoBehaviour
 {
-    public static Client instance;
+    public static Client instance; //singelton instance
     public static int dataBufferSize = 4096;
 
+    //IP and Port where the client will connect to
     public string ip = "127.0.0.1";
     public int port = 26950;
     public int myID = 0;
@@ -123,16 +128,19 @@ public class Client : MonoBehaviour
                 byte[] data = new byte[byteLength];
                 Array.Copy(receiveBuffer, data, byteLength); //copying the received bytes into the new array
 
-                //TODO: handle data
-                receivedData.Reset(HandleData(data)); //takes in the bool returned by HandleData method
-                //wether or not the receivedData packet gets recet, depends on the value returned by HandleData
-                //our server and client are communicating through TCP, this protocol is stream based!
-                //meaning it sends an continues stream of information, assuring that all packets sending are delivered and in correct order
-                //while the chunks of data beeing sent over are garanteed to arrive, they arent garanteed to be delviered in one piece!
-                //when we send a packet it will be added to a larger list of bytes, once enough bytes are accumlated, they are sent in 1 bigger delivery
-                //TCP leaves it up to us handling cases where a packet are split between 2 deliveries, which why we dont always reset received bytes
-                //there could still be a piece of a packet in there that we havent handled yet, because the rest hasnt arrived
-                //if we would reset recieved Bytes then, we would throw away data, which result in us throwing away packets
+                receivedData.Reset(HandleData(data));
+                ///<summary> Partial packets, resetting received bytes explanation
+                ///takes in the bool returned by HandleData method
+                ///wether or not the receivedData packet gets reset, depends on the value returned by HandleData
+                ///our server and client are communicating through TCP, this protocol is stream based!
+                ///meaning it sends an continues stream of information, assuring that all packets sending are delivered and in correct order
+                ///while the chunks of data being sent over are garanteed to arrive, they aren't garanteed to be delivered in one piece!
+                ///when we send a packet it will be added to a larger list of bytes, once enough bytes are accumalated, they are sent in 1 bigger delivery
+                ///TCP leaves it up to us handling cases where a packet is split between 2 deliveries, which why we dont always reset received bytes
+                ///there could still be a piece of a packet in there that we havent handled yet, because the rest hasnt arrived
+                ///if we would reset received bytes then, we would throw away data, which result in us throwing away packets
+                ///</summary>
+
 
                 stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
@@ -182,7 +190,7 @@ public class Client : MonoBehaviour
                 packetLength = 0;
                 if (receivedData.UnreadLength() >= 4)
                 {
-                    //so we store that length in packet length, if the packet length is less then 1 we return true, because we want to reset receivedData
+                    //so we store that length in packet length, if the packet length is less than 1 we return true, because we want to reset receivedData
                     packetLength = receivedData.ReadInt();
                     if (packetLength <= 0)
                     {
@@ -241,7 +249,7 @@ public class Client : MonoBehaviour
             try
             {
                 //Inserting client id into the packet, because we use this value on the server to determine who sent it
-                //because of the way udp works, we cant give every client an own udp instance on the server, because of issues with ports beeing closed
+                //because of the way udp works, we cant give every client an own udp instance on the server, because of issues with ports being closed
                 //typically only 1 udp client is used on the server, so all udp communication is handled by a single udp client instance! 
                 packet.InsertInt(instance.myID);
                 if (socket != null)
@@ -305,7 +313,7 @@ public class Client : MonoBehaviour
         }
     }
 
-
+    //filling in the dictionary by passing the num and the associated ClientHandle function
     private void InitializeClientData()
     {
         packetHandlers = new Dictionary<int, PacketHandler>()

@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
         deathCountText.text = $"Deaths: {deathCount}";
     }
 
+    //quitting game with esc
     private void Update()
     {
         if (Input.GetKey(KeyCode.Escape))

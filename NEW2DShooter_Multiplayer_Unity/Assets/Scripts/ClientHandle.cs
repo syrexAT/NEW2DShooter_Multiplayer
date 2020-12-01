@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Net;
+
+/// <summary>
+/// This class handles incoming packets from the server by reading it and calling a associated method
+/// </summary>
 public class ClientHandle : MonoBehaviour
 {
-    //welcome packet erhalten, auslesen und welcomerecieved zurücksenden
-    //noch die id die mir der server geschicckt hat auf meine id gleichweisen
+    //receive welcome packet, read it and send welcomereceived back
+    //read the ID I got from the server and equate it on my ID
     public static void Welcome(Packet packet)
     {
         //it is important to read values from packet the same way as we wrote them! so string first, then int!
@@ -20,6 +24,7 @@ public class ClientHandle : MonoBehaviour
         Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
     }
 
+    //reading the information we get sent from the server when spawning a player
     public static void SpawnPlayer(Packet packet)
     {
         int id = packet.ReadInt();
@@ -30,6 +35,7 @@ public class ClientHandle : MonoBehaviour
         GameManager.instance.SpawnPlayer(id, username, position, rotation);
     }
 
+    //reading the players transform position we get sent from the server 
     public static void PlayerPosition(Packet packet)
     {
         int id = packet.ReadInt();
@@ -39,6 +45,7 @@ public class ClientHandle : MonoBehaviour
         GameManager.players[id].transform.position = position;
     }
 
+    //reading the players rotation
     public static void PlayerRotation(Packet packet)
     {
         int id = packet.ReadInt();
@@ -47,19 +54,12 @@ public class ClientHandle : MonoBehaviour
         GameManager.players[id].transform.rotation = rotation;
     }
 
+    //reading the position and the ID we get sent from the server to spawn a projectile
     public static void SpawnProjectile(Packet packet)
     {
         int playerID = packet.ReadInt();
         Vector2 position = packet.ReadVector2();
 
-        //GameManager.players[playerID].projectiles[projectileID].SpawnProjectile(playerID, projectileID, position);
         GameManager.instance.SpawnProjectile(playerID, position);
     }
-
-    //public static void ProjectilePosition(Packet packet)
-    //{
-    //    int playerID = packet.ReadInt();
-    //    int projectileID = packet.ReadInt();
-    //    Vector2 position = packet.ReadVector2();
-    //}
 }

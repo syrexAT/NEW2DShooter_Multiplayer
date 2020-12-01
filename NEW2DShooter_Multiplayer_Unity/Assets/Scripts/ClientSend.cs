@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class takes care of all data that gets sent from the client to the server
+/// We create a new packet in a block, which disposes it at the end as it inherits from IDisposable
+/// In the created packet, we use overload methods from Packet.cs to convert data into bytes and sending it over to the server
+/// This works in TCP as well as in UDP.
+/// </summary>
 public class ClientSend : MonoBehaviour
 {
     //just like on the server
@@ -17,7 +23,7 @@ public class ClientSend : MonoBehaviour
         Client.instance.udp.SendData(packet);
     }
 
-    //ID und username zurückschicken
+    //send back the ID and the username
     public static void WelcomeReceived()
     {
         using (Packet packet = new Packet((int)ClientPackets.welcomeReceived))
@@ -29,6 +35,7 @@ public class ClientSend : MonoBehaviour
         }
     }
 
+    //sending the player position to the server
     public static void PlayerPosition(Vector2 movement)
     {
         using (Packet packet = new Packet((int)ClientPackets.playerPosition))
@@ -42,6 +49,7 @@ public class ClientSend : MonoBehaviour
 
     }
 
+    //when a projectile gets spawned we send this information to the server
     public static void SpawnProjectile(Projectile projectile, int _shotByPlayer)
     {
         using (Packet packet = new Packet((int)ClientPackets.newProjectile))
@@ -53,6 +61,7 @@ public class ClientSend : MonoBehaviour
         }
     }
 
+    //if a projectile gets destroyed by colliding with something, we also send this over to the server
     public static void RemoveProjectile(Projectile projectile)
     {
         using (Packet packet = new Packet((int)ClientPackets.newProjectile))
@@ -62,18 +71,4 @@ public class ClientSend : MonoBehaviour
             SendTCPData(packet);
         }
     }
-
-    //public static void ProjectilePosition(Projectile projectile)
-    //{
-    //    using (Packet packet = new Packet((int)ClientPackets.projectilePosition))
-    //    {
-    //        packet.Write(projectile.id);
-    //        packet.Write(projectile.transform.position);
-
-    //        SendTCPData(packet);
-    //    }
-    //}
-
-
-
 }

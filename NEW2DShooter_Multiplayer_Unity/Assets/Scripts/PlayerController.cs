@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class controlls the player, moving, rotating and making him able to shoot
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     public Vector2 movement;
@@ -24,10 +27,10 @@ public class PlayerController : MonoBehaviour
     {
         Debug.DrawRay(transform.position, transform.up * 2, Color.red);
         Vector3 cursorInWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        //Debug.Log(cursorInWorldPos);
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
+        //Shooting with left mouse button, instantiating a projectile and calling the SpawnProjectile function to send it to the server
         if (Input.GetKey(KeyCode.Mouse0) && shootingCooldown <= 0)
         {
             Vector3 newProjectilePos = transform.position + (mousePos - transform.position).normalized * 0.7f;
@@ -43,8 +46,6 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
-
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
         //transform.position += (Vector3)movement.normalized * moveSpeed * Time.fixedDeltaTime;
