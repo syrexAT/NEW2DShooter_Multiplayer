@@ -248,6 +248,8 @@ namespace NEWGameServer
 
             tcp.Disconnect();
             udp.Disconnect();
+
+            ServerSend.PlayerDisconnected(id);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace NEWGameServer
         playerPosition,
         playerRotation,
         spawnProjectile,
-        //projectilePosition
+        playerDisconnected,
     }
 
     /// <summary>Sent from client to server.</summary>

@@ -323,7 +323,7 @@ public class Client : MonoBehaviour
             {(int)ServerPackets.playerPosition, ClientHandle.PlayerPosition },
             {(int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
             {(int)ServerPackets.spawnProjectile, ClientHandle.SpawnProjectile },
-            //{(int)ServerPackets.projectilePosition, ClientHandle.ProjectilePosition }
+            {(int)ServerPackets.playerDisconnected, ClientHandle.PlayerDisconnected }
         };
         Debug.Log("Initialized packets");
     }

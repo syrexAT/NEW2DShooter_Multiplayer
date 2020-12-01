@@ -62,4 +62,13 @@ public class ClientHandle : MonoBehaviour
 
         GameManager.instance.SpawnProjectile(playerID, position);
     }
+
+    //reading what player disconnected and remove him from the game
+    public static void PlayerDisconnected(Packet packet)
+    {
+        int id = packet.ReadInt();
+
+        Destroy(GameManager.players[id].gameObject);
+        GameManager.players.Remove(id);
+    }
 }

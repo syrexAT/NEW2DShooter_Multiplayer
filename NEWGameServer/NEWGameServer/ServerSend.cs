@@ -143,16 +143,14 @@ namespace NEWGameServer
             }
         }
 
-        //public static void ProjectilePosition(Projectile projectile)
-        //{
-        //    using (Packet packet = new Packet((int)ServerPackets.projectilePosition))
-        //    {
-        //        packet.Write(projectile.player.id);
-        //        packet.Write(projectile.id);
-        //        packet.Write(projectile.position);
+        public static void PlayerDisconnected(int playerID)
+        {
+            using (Packet packet = new Packet((int)ServerPackets.playerDisconnected))
+            {
+                packet.Write(playerID);
 
-        //        SendUDPDataToAll(projectile.player.id, packet);
-        //    }
-        //}
+                SendTCPDataToAll(packet);
+            }
+        }
     }
 }
