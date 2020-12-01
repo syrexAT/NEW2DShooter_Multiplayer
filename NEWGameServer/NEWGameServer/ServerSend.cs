@@ -144,5 +144,15 @@ namespace NEWGameServer
                 SendTCPData(toClient, packet);
             }
         }
+
+        public static void PlayerDisconnected(int playerID)
+        {
+            using (Packet packet = new Packet((int)ServerPackets.playerDisconnected))
+            {
+                packet.Write(playerID);
+
+                SendTCPDataToAll(packet);
+            }
+        }
     }
 }

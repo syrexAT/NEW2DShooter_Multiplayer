@@ -12,8 +12,7 @@ public enum ServerPackets
     playerPosition,
     playerRotation,
     spawnProjectile,
-    //projectilePosition
-
+    playerDisconnected,
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -23,7 +22,6 @@ public enum ClientPackets
     playerPosition,
     playerRotation,
     newProjectile,
-    //projectilePosition
 }
 
 public class Packet : IDisposable
